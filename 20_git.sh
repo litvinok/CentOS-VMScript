@@ -23,29 +23,29 @@ mysql -e "FLUSH PRIVILEGES;"
 
 cd /home/git
 
-sudo -u git -H git clone https://github.com/gitlabhq/gitlabhq.git gitlab
+git clone https://github.com/gitlabhq/gitlabhq.git gitlab
 cd /home/git/gitlab
-sudo -u git -H git checkout 5-2-stable
-sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
+git checkout 5-2-stable
+cp config/gitlab.yml.example config/gitlab.yml
 
 chown -R git log/
 chown -R git tmp/
 chmod -R u+rwX  log/
 chmod -R u+rwX  tmp/
 
-sudo -u git -H mkdir /home/git/gitlab-satellites
+mkdir /home/git/gitlab-satellites
 
-sudo -u git -H mkdir tmp/pids/
-sudo -u git -H mkdir tmp/sockets/
+mkdir tmp/pids/
+mkdir tmp/sockets/
 chmod -R u+rwX  tmp/pids/
 chmod -R u+rwX  tmp/sockets/
 
-sudo -u git -H mkdir public/uploads
+mkdir public/uploads
 chmod -R u+rwX  public/uploads
 
-sudo -u git -H cp config/puma.rb.example config/puma.rb
-sudo -u git -H git config --global user.name "GitLab"
-sudo -u git -H git config --global user.email "gitlab@localhost"
+cp config/puma.rb.example config/puma.rb
+git config --global user.name "GitLab"
+git config --global user.email "gitlab@localhost"
 
 cat << 'EOF' > config/database.yml
 production:
