@@ -60,3 +60,4 @@ EOF
 
 cd /home/git/gitlab
 bundle install --deployment --without development test postgres
+bundle exec rake gitlab:setup RAILS_ENV=production
