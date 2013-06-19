@@ -24,3 +24,4 @@ gem install rake
 gem install rails
 gem install mysql2
 gem install rmagick
+gem install vpim
