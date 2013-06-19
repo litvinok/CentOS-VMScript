@@ -70,3 +70,7 @@ rm -f coffee-0_0_3.zip
 wget -c http://redminecrm.com/license_manager/3834/redminecrm-0_0_1.zip && \
 unzip redminecrm-0_0_1.zip && \
 rm -f redminecrm-0_0_1.zip
+
+git clone https://github.com/pixel-cookers/redmine-theme.git
+
+cd /home/redmine
