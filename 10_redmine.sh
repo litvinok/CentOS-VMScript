@@ -1,12 +1,12 @@
 #!/bin/sh
 
-yum install mysql-server -y
+yum install wget mysql-server -y
 service mysqld start
 
 cd /home
 git clone https://github.com/edavis10/redmine.git
 
-cd redmine
+cd /home/redmine
 git checkout 2.3-stable
 git pull
 
@@ -31,3 +31,42 @@ RAILS_ENV=production REDMINE_LANG=ru rake redmine:load_default_data
 
 mkdir -p tmp tmp/pdf public/plugin_assets
 chmod -R 777 files log tmp public/plugin_assets
+
+cd /home/redmine/plugins
+
+wget -c http://redminecrm.com/license_manager/4200/redmine_issue_checklist-2_0_5.zip && \
+unzip redmine_issue_checklist-2_0_5.zip && \
+rm -f redmine_issue_checklist-2_0_5.zip
+
+wget -c http://redminecrm.com/license_manager/4122/redmine_people-0_1_6.zip && \
+unzip redmine_people-0_1_6.zip && \
+rm -f redmine_people-0_1_6.zip
+
+wget -c https://bitbucket.org/haru_iida/redmine_theme_changer/downloads/redmine_theme_changer-0.1.0.zip && \
+unzip redmine_theme_changer-0.1.0.zip && \
+rm -f redmine_theme_changer-0.1.0.zip
+
+git clone https://github.com/iRessources/AgileDwarf.git
+rake redmine:plugins:migrate RAILS_ENV=production
+
+cd /home/redmine/public/themes/
+
+wget -c http://redminecrm.com/license_manager/5340/a1-1_1_1.zip && \
+unzip a1-1_1_1.zip && \
+rm -f a1-1_1_1.zip
+
+wget -c http://redminecrm.com/license_manager/3918/highrise_tabs-1_1_1.zip
+unzip highrise_tabs-1_1_1.zip && \
+rm -f highrise_tabs-1_1_1.zip
+
+wget -c http://redminecrm.com/license_manager/3917/highrise-1_1_1.zip && \
+unzip highrise-1_1_1.zip && \
+rm -f highrise-1_1_1.zip
+
+wget -c http://redminecrm.com/license_manager/4508/coffee-0_0_3.zip && \
+unzip coffee-0_0_3.zip && \
+rm -f coffee-0_0_3.zip
+
+wget -c http://redminecrm.com/license_manager/3834/redminecrm-0_0_1.zip && \
+unzip redminecrm-0_0_1.zip && \
+rm -f redminecrm-0_0_1.zip
