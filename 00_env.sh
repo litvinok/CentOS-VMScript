@@ -6,7 +6,7 @@ rpm -Uvh http://rbel.co/rbel5
 
 yum update -y
 yum groupinstall "Development Tools" -y
-yum install libyaml-devel mysql mysql-devel mysql-lib ImageMagick-devel ImageMagick-c++-devel -y
+yum install libyaml-devel mysql mysql-devel mysql-lib ImageMagick-devel ImageMagick-c++-devel httpd libtool httpd-devel apr-devel apr curl-devel-y
 
 curl -L https://get.rvm.io | bash
 source /etc/profile
