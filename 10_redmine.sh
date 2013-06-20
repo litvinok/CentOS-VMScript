@@ -74,9 +74,3 @@ rm -f redminecrm-0_0_1.zip
 git clone https://github.com/pixel-cookers/redmine-theme.git pixel-cookers
 
 cd /home/redmine
-
-yum install httpd libtool httpd-devel apr-devel apr curl-devel -y
-gem install RedCloth
-gem install passenger
-
-
