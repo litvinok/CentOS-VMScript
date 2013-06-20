@@ -1,8 +1,9 @@
 #!/bin/sh
 
-yum install sudo vim libicu-devel -y
+rpm -ivh http://centos.alt.ru/repository/centos/5/i386/centalt-release-5-3.noarch.rpm
+yum install sudo vim libicu-devel redis -y
 gem install charlock_holmes --version '0.6.9.4'
-
+  
 useradd -U -d /home/git -c "GitLab" git
 echo "git  ALL=(ALL)  ALL" >> /etc/sudoers
 
