@@ -11,6 +11,8 @@ yum install libyaml-devel mysql mysql-devel mysql-lib ImageMagick-devel ImageMag
 curl -L https://get.rvm.io | bash
 source /etc/profile
 
+su -
+
 type rvm | head -n 1
 
 rvm pkg install libyaml
