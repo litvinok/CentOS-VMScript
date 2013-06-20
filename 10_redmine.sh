@@ -74,3 +74,21 @@ rm -f redminecrm-0_0_1.zip
 git clone https://github.com/pixel-cookers/redmine-theme.git pixel-cookers
 
 cd /home/redmine
+
+gem install thin
+mkdir /etc/thin
+cat << 'EOF' > /etc/thin/redmine.yml
+pid: tmp/pids/thin.pid
+group: nginx
+timeout: 30
+log: log/thin.log
+max_conns: 1024
+environment: production
+max_persistent_conns: 512
+servers: 4
+daemonize: true
+user: nginx
+socket: /tmp/thin.sock
+chdir: /home/redmine
+EOF
+
