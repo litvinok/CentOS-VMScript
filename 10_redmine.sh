@@ -76,6 +76,12 @@ git clone https://github.com/pixel-cookers/redmine-theme.git pixel-cookers
 cd /home/redmine
 
 gem install thin
+gem install daemons
+gem install eventmachine
+gem install cgi_multipart_eof_fix
+gem install action_mailer_tls
+gem install activerecord-mysql-adapter
+
 mkdir /etc/thin
 cat << 'EOF' > /etc/thin/redmine.yml
 pid: tmp/pids/thin.pid
@@ -92,3 +98,35 @@ socket: /tmp/thin.sock
 chdir: /home/redmine
 EOF
 
+cat << 'EOF' > /etc/nginx/conf.d/redmine.conf
+upstream thin_cluster {
+    server unix:/tmp/thin.0.sock;
+    server unix:/tmp/thin.1.sock;
+    server unix:/tmp/thin.2.sock;
+    server unix:/tmp/thin.3.sock;
+}
+
+server {
+    listen       80;
+    server_name  _;
+
+    access_log  /var/log/nginx/redmine-proxy-access;
+    error_log   /var/log/nginx/redmine-proxy-error;
+
+    include conf.d/proxy.include;
+    root /home/redmine/public;
+    proxy_redirect off;
+
+    location / {
+        try_files $uri/index.html $uri.html $uri @cluster;
+    }
+
+    location @cluster {
+        proxy_pass http://thin_cluster;
+    }
+}
+EOF
+
+chkconfig nginx on
+chkconfig mysqld on
+chkconfig thin on
