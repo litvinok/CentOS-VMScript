@@ -1,6 +1,9 @@
 #!/bin/sh
 
 #rpm -ivh http://centos.alt.ru/repository/centos/5/i386/centalt-release-5-3.noarch.rpm
+
+rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/gperftools-libs-2.0-11.el6.1.x86_64.rpm
+rpm -ivh http://centos.alt.ru/repository/centos/6/x86_64/redis-2.6.13-1.el6.x86_64.rpm
 yum install sudo vim libicu-devel redis -y
 gem install charlock_holmes --version '0.6.9.4'
   
