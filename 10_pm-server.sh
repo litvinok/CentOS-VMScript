@@ -7,6 +7,12 @@ gem install rails
 gem install mysql2
 gem install rmagick
 gem install vpim
+gem install puma
+gem install daemons
+gem install eventmachine
+gem install cgi_multipart_eof_fix
+gem install action_mailer_tls
+gem install activerecord-mysql-adapter
 
 gem install charlock_holmes --version '0.6.9.4'
 
