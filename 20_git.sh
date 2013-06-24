@@ -14,7 +14,7 @@ sudo su git
 cd /home/git
 git clone https://github.com/gitlabhq/gitlab-shell.git
 cd gitlab-shell
-git checkout v1.5.0
+git checkout v1.4.0
 cp config.yml.example config.yml
 ./bin/install
 
