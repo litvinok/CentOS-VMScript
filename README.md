@@ -1,4 +1,3 @@
-
 1. Prepare system
 ```
 yum update
@@ -10,5 +9,8 @@ cat ~/.ssh/id_rsa.pub
 2. Add to repository Deployment key
 3. Clone this repository
 4. Run needed scripts
+
+
+https://gist.github.com/matthewriley/4694850
 
 Good luck!
