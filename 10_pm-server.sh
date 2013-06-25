@@ -150,3 +150,4 @@ EOF
 cd /home/git/gitlab
 bundle install --deployment --without development test postgres
 bundle exec rake gitlab:setup RAILS_ENV=production
+#bundle exec rake assets:precompile RAILS_ENV=production RAILS_RELATIVE_URL_ROOT=/gitlab
